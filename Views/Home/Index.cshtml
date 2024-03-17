@@ -1,0 +1,225 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center pb-5">
+    <h1 class="display-4 ">Seja bem-vindo(a)!</h1>
+    <p>Projeto de Agenda Telefônica <a href="https://learn.microsoft.com/aspnet/core">feito com ASP.NET</a>.</p>
+</div>
+<main class="container my-5">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="list-group list-group-flush">
+                <h4 class="mb-1 display-6">Saiba mais sobre este projeto</h4>
+                <p class="card-text mb-4">Veja os tópicos abaixo para compreender melhor o projeto</p>
+                <li id="l1" class="list-group-item list-group-item-action active" onclick="toggleDiv('div1'), ativaLink('l1')">
+                    <input class="form-check-input me-1" type="checkbox" id="firstCheckbox" checked="true"
+                        disabled="true">
+                    <label class="form-check-label" for="firstCheckbox">Introdução</label>
+                    <p class="mb-1">Detalhes sobre o projeto.</p>
+                </li>
+                <li id="l2" class="list-group-item list-group-item-action"
+                    onclick="toggleDiv('div2'), ativaLink('l2'), bloquearCheckbox('secondCheckbox')">
+                    <input class="form-check-input me-1" type="checkbox" id="secondCheckbox">
+                    <label class="form-check-label" for="secondCheckbox">Funcionalidades</label>
+                    <p class="mb-1">Passo a passo para utilizar.</p>
+                </li>
+                <li id="l3" class="list-group-item list-group-item-action"
+                    onclick="toggleDiv('div3'), ativaLink('l3'), bloquearCheckbox('thirdCheckbox')">
+                    <input class="form-check-input me-1" type="checkbox" id="thirdCheckbox">
+                    <label class="form-check-label" for="thirdCheckbox">Recursos</label>
+                    <p class="mb-1">Tecnologias utilizadas no projeto.</p>
+                </li>
+            </div>
+            <div class="progress my-5" role="progressbar" aria-label="Animated striped example" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+            </div>
+            <div class="alert alert-success d-flex align-items-center" role="alert" style="visibility: hidden;">
+                <img class="mx-2" src="~/check.png">
+                <div>
+                    <strong>Success:</strong> você completou esse tutorial!
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 ps-4">
+            <div id="div1" class="toggleable-div">
+                <h1 class="display-6">Introdução</h1>
+                <p class="mt-4">Este projeto representa a conclusão do meu aprendizado e aplicação dos princípios da
+                    Programação Orientada a Objetos (POO) no contexto do C# e ASP.NET MVC. Inspirado nas instruções do
+                    Professor <a href="https://www.linkedin.com/in/leonardo-buta/">Leonardo Buta</a>, da DIO, busquei
+                    criar uma solução robusta e eficiente para uma agenda de contatos, implementando todas as
+                    funcionalidades essenciais de uma API através de um front-end MVC em ASP.NET e um back-end em C#.</p>
+                <p>Destaco a utilização do Entity Framework (Object-Relational Mapping) e do .NET (Common Language
+                    Runtime - CLR) para a construção do backend, proporcionando uma integração eficaz com o banco de
+                    dados MariaDB no ambiente XAMPP. A estrutura do projeto foi organizada em controllers, views e uma
+                    conexão sólida com o banco de dados, seguindo as melhores práticas de desenvolvimento.</p>
+                <p>Este projeto não apenas consolidou meus conhecimentos teóricos, mas também fortaleceu minhas
+                    habilidades práticas, preparando-me para enfrentar desafios no mercado de trabalho. Agradeço ao
+                    Leonardo, cuja orientação durante as aulas foi fundamental para o sucesso deste projeto. Estou
+                    confiante de que os conhecimentos adquiridos serão aplicados com sucesso em minha trajetória
+                    profissional.</p>
+            </div>
+            <div id="div2" class="toggleable-div" style="display: none;">
+                <h1 class="display-6 mb-4">Funcionalidades</h1>
+                <div style="display: flex; align-items:center; flex-wrap:wrap; justify-content: space-evenly">
+                    <div class="card m-2" style="width: 15rem;">
+                        <img src="~/criar.png" class="card-img-top w-25 h-25 mt-2 ms-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Create</h5>
+                            <p class="card-text">Adicionar um novo contato no banco de dados.</p>
+                            <a asp-controller="Contato" asp-action="Criar" class="btn btn-primary">Testar</a>
+                        </div>
+                    </div>
+                    <div class="card m-2" style="width: 15rem;">
+                        <img src="~/leitura.png" class="card-img-top w-25 h-25 mt-1 ms-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Read</h5>
+                            <p class="card-text">Ver os contatos que estão salvos.</p>
+                            <a asp-controller="Contato" asp-action="Index" class="btn btn-primary">Testar</a>
+                        </div>
+                    </div>
+                    <div class="card m-2" style="width: 15rem;">
+                        <img src="~/atualizar.png" class="card-img-top w-25 h-25 mt-2 ms-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Update</h5>
+                            <p class="card-text">Atualizar as informações de um contato (nome, telefone, ativo).</p>
+                            <a asp-controller="Contato" asp-action="Editar_Id" class="btn btn-primary">Testar</a>
+                        </div>
+                    </div>
+                    <div class="card m-2" style="width: 15rem;">
+                        <img src="~/remover.png" class="card-img-top w-25 h-25 mt-2 ms-2" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Delete</h5>
+                            <p class="card-text">Remover um contato que está banco de dados pelo id ou na própria
+                                consulta.</p>
+                            <a asp-controller="Contato" asp-action="Deletar_Id" class="btn btn-primary">Testar</a>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="display-6 my-4">Observações</h1>
+                <p>Para testar o projeto localmente, é necessário configurar um servidor local. Recomenda-se o uso do
+                    Xampp para essa finalidade. Após instalar o Xampp, você precisará ajustar as configurações de
+                    conexão no arquivo "aspsettings.Development.json".</p>
+                <ol>
+                    <li class="mb-3">Instale o Xampp: Se ainda não o fez, baixe e instale o Xampp no seu sistema
+                        operacional;</li>
+                    <li class="mb-3">Localize o arquivo "aspsettings.Development.json": Este arquivo é geralmente
+                        encontrado dentro do diretório do projeto em que você está trabalhando. Ele contém as
+                        configurações de conexão com o banco de dados;</li>
+                    <li class="mb-3">Altere a ConnectionString: Abra o arquivo "aspsettings.Development.json" em um
+                        editor de texto e encontre a seção onde a ConnectionString está definida. Esta string geralmente
+                        se parece com:
+                        <img src="~/connection.png" class="w-75" alt="">
+                        <p>Certifique-se de alterar o valor de "Server" para "localhost" e, se a porta padrão do MySQL
+                            no Xampp foi alterada (geralmente é 3306), ajuste a porta conforme necessário;</p>
+                    </li>
+                    <li class="mb-3">Verifique o usuário e a senha: Garanta que o usuário e a senha configurados no Xampp correspondam aos definidos na ConnectionString;</li>
+                    <li class="mb-3">Aplique as migrações do Entity Framework: Abra um terminal na pasta do projeto e execute o seguinte comando para aplicar as migrações ao banco de dados: dotnet ef database update;</li>
+                    <li class="mb-3">Salve as alterações e execute o projeto: Após fazer essas alterações, salve o
+                        arquivo "aspsettings.Development.json". Em seguida, abra um terminal na pasta do projeto e
+                        execute o seguinte comando para iniciar o projeto: <code>dotnet watch run</code>;</li>
+                    <li class="mb-3">Certifique-se de que o servidor MySQL no Xampp esteja em execução enquanto você
+                        testa o projeto localmente. Essas etapas devem permitir que o projeto se conecte ao banco de
+                        dados MySQL do Xampp sem problemas.</li>
+                </ol>
+            </div>
+            <div id="div3" class="toggleable-div" style="display: none;">
+                <h1 class="display-6">Recursos</h1>
+                <ul class="list-group my-4">
+                    <li class="list-group-item">C# / .NET / ASP.NET MVC (8.0.101)</li>
+                    <li class="list-group-item">Entity Framework (8.0.2)</li>
+                    <li class="list-group-item">Pomelo MySQL (8.0.0)</li>
+                    <li class="list-group-item">Xampp (8.2.12)</li>
+                    <li class="list-group-item">Bootstrap (5.3.3)</li>
+                </ul>
+                <h1 class="display-6">Links</h1>
+                <a href="mailto:milenynogueira.oficial.br@gmail.com" target="_blank"><img
+                        src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+                <a href="https://www.linkedin.com/in/mileny-nogueira-nascimento-b554211a6/" target="_blank"><img
+                        src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+                <a href="https://www.youtube.com/channel/UCDJfMCnDGbbNrWBKuLVm5qg" target="_blank"><img
+                        src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" /></a>
+                <a href="https://img.shields.io/badge/GitHub"></a>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Função para calcular o progresso da barra de progresso
+        function calcularProgresso() {
+            // Seleciona todas as checkboxes no formulário
+            var checkboxs = document.querySelectorAll('.form-check-input');
+            // Inicializa o contador de progresso
+            var cont = 0;
+
+            // Verifica cada checkbox para determinar o progresso total
+            checkboxs.forEach(function (element) {
+                // Verifica se ela está marcada
+                var valorChecked = element.checked;
+                // Se estiver marcada, incrementa o contador
+                if (valorChecked)
+                {
+                    cont += 33.33; // Cada checkbox marcada contribui com 33,33% para o progresso total
+                }
+            });
+
+            // Se o progresso ainda não atingiu 99,99%, continua calculando o progresso
+            if (cont < 99.99) 
+            {
+                requestAnimationFrame(calcularProgresso);
+            }else{
+                var progresso = document.querySelector('.progress');
+                progresso.style.width = 100 + "%";
+            }
+            
+            // Atualiza visualmente a barra de progresso
+            var progresso = document.querySelector('.progress');
+            progresso.style.width = cont + "%";
+
+            //Se o progresso atingir 99,99%, exibe um alerta
+            if (cont == 99.99)
+            {
+                var alert = document.querySelector('.alert');
+                alert.style.visibility = "visible";
+            }
+        }
+        // Inicializa o cálculo do progresso quando o DOM estiver totalmente carregado
+        calcularProgresso();
+    });
+
+    function toggleDiv(divId) {
+        // Seleciona as divs do documento
+        var div = document.getElementById(divId);
+        var allDivs = document.querySelectorAll('.toggleable-div');
+
+        // Oculta todas as divs
+        allDivs.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Mostra a div correspondente ao link clicado
+        div.style.display = 'block';
+    }
+
+    function ativaLink(liId) {
+        // Seleciona o list-item
+        var li = document.getElementById(liId);
+        var allLi = document.querySelectorAll('.list-group-item');
+        // Remove o efeito de ativo
+        allLi.forEach(function (element) {
+            element.classList.remove('active');
+        });
+        // Adiciona o efeito para aquele que foi clicado
+        li.classList.add('active');
+    }
+
+    function bloquearCheckbox(inputId) {
+        // Seleciona a checkbox
+        var checkbox = document.getElementById(inputId);
+
+        // Desativa o checkbox após ser clicada
+        checkbox.disabled = true;
+        checkbox.checked = true;
+    }
+</script>

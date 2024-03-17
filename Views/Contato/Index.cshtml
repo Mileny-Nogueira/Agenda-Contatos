@@ -1,0 +1,54 @@
+@model IEnumerable<ProjetoMVC.Models.Contato>
+    @{
+        ViewData["Title"] = "Listagem de Contatos";
+    }
+
+    <h1 class="my-4">Contatos</h1>
+
+    <table class="table table-striped caption-top">
+        <caption>Lista de contatos cadastrados</caption>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ativo)
+                </th>
+                <th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Ativo)
+                    </td>
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+                        <a asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a asp-action="Criar" class="btn btn-outline-secondary mt-3">Novo Contato</a>
+    </p>

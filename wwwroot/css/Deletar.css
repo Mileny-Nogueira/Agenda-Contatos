@@ -1,0 +1,7 @@
+.row{
+    font-size: 20px;
+}
+/*Aplica o efeito somente para os filhos pares da .row*/
+.row > :nth-child(even){
+    font-weight: 100;
+}

@@ -4,7 +4,7 @@ Este projeto representa a conclusão do meu aprendizado e aplicação dos princ�
 ![image](wwwroot/imagem_site.png)
 
 ## Recursos utilizados
-<li>C# / .NET / ASP.NET MVC (8.0.101</li>
+<li>C# / .NET / ASP.NET MVC (8.0.101)</li>
 <li>Entity Framework (8.0.2)</li>
 <li>Pomelo MySQL (8.0.0)</li>
 <li>Xampp (8.2.12)</li>
